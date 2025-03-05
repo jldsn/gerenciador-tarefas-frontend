@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000/tarefas',
+  baseURL: 'https://gerenciador-tarefas-jv2w.onrender.com/tarefas',
 });
 
 export const getTasks = async () => {
