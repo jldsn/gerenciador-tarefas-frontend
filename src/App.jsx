@@ -4,11 +4,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getTasks, addTask, updateTask, deleteTask } from './services/api';
 import KanbanBoard from './components/KanbanBoard';
 import TaskForm from './components/TaskForm';
-import FilterBar from './components/FilterBar';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
-  const [filter, setFilter] = useState('');
 
   useEffect(() => {
     fetchTasks();
@@ -53,15 +51,12 @@ const App = () => {
     }
   };
 
-  const filteredTasks = filter ? tasks.filter(task => task.prioridade === filter) : tasks;
-
   return (
     <div className="app">
       <h1>Kanban Board</h1>
-      <FilterBar onFilter={setFilter} />
       <TaskForm onSubmit={handleAddTask} />
       <KanbanBoard
-        tasks={filteredTasks}
+        tasks={tasks}
         onUpdateTask={handleUpdateTask}
         onDeleteTask={handleDeleteTask}
       />
